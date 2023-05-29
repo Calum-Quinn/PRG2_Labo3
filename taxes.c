@@ -16,5 +16,5 @@
 #include "taxes.h"
 
 double calculerTaxe(Bateau* bateau){
-
+   return 0;
 }

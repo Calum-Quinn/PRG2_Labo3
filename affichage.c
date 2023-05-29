@@ -4,7 +4,7 @@
  Auteur(s)      : Ewan Mariaux, Calum Quinn, Dario Vasques
  Date creation  : 25.05.2023
 
- Description    : Programme servant à effectuer l'affichage
+ Description    : Programme servant à effectuer l'affichage des bateaux
 
  Remarque(s)    : -
 
