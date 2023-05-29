@@ -13,10 +13,40 @@
  -----------------------------------------------------------------------------------
 */
 
+/*
+ *    moteurs
+ *       types
+ *          pêches
+ *             tonnes de poissons
+ *          plaisance
+ *             longueur
+ *             nom du propriétaire
+ *       puissance moteurs
+ *
+ *
+ *    voiliers
+ *       surface m^2 voile
+ *
+ *
+ *
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
+#include "bateau.h"
+
 
 int main (){
+
+   Bateau monBateau = {"nom Bateau", moteur, {.bateauMoteur={.peche={10}}}};
+
+   Bateau port[] = {{"Poisson", moteur, {.bateauMoteur={.peche={10,20}}}}
+                     ,{"Santa Maria", voilier,{.voilier={150}}}
+                     ,{"L'Hermione",voilier,{.voilier={250}}}
+                     ,{"Titanic",moteur,{.bateauMoteur={.plaisance={"Edward Smith",269,500}}}}
+                     ,{"Chalutier",moteur,{.bateauMoteur={.peche={40,40}}}}
+                     ,{"Atlantis",moteur,{.bateauMoteur={.plaisance={"Ewan Mariaux",100,50}}}}
+   };
 
 
 	return EXIT_SUCCESS;
