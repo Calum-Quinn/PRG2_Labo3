@@ -38,7 +38,7 @@
 
 int main (){
 
-   Bateau monBateau1 = {"nom Bateau", moteur, {.bateauMoteur={.peche={10}}}};
+   Bateau monBateau = {"nom Bateau", moteur, {.bateauMoteur={.peche={10}}}};
 
    Bateau port[] = {{"Poisson", moteur, {.bateauMoteur={.peche={10,20}}}}
                      ,{"Santa Maria", voilier,{.voilier={150}}}

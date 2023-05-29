@@ -4,7 +4,7 @@
  Auteur(s)      : Ewan Mariaux, Calum Quinn, Dario Vasques
  Date creation  : 25.05.2023
 
- Description    : En-tête afin d'effectuer l'affichage des bateazx
+ Description    : En-tête afin d'effectuer l'affichage des bateaus
 
  Remarque(s)    : -
 

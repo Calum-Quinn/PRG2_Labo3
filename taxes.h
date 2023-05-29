@@ -4,7 +4,7 @@
  Auteur(s)      : Ewan Mariaux, Calum Quinn, Dario Vasques
  Date creation  : 25.05.2023
 
- Description    : header pour la calcul des taxe
+ Description    : header pour la calcul des taxes
 
  Remarque(s)    : -
 

@@ -4,7 +4,7 @@
  Auteur(s)      : Ewan Mariaux, Calum Quinn, Dario Vasques
  Date creation  : 25.05.2023
 
- Description    : Entete pour la création de bateaux.
+ Description    : Entete pour la création de bateau.
 
  Remarque(s)    : -
 

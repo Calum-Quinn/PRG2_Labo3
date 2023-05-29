@@ -4,7 +4,7 @@
  Auteur(s)      : Ewan Mariaux, Calum Quinn, Dario Vasques
  Date creation  : 25.05.2023
 
- Description    : Programme servant à créer des bateau
+ Description    : Programme servant à créer des bateaux
 
  Remarque(s)    : -
 
