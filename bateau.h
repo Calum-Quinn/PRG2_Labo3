@@ -23,21 +23,28 @@ typedef uint16_t PuissancesMoteurs;    //en CV
 typedef uint8_t PoissonsMax;           //en tonnes
 typedef uint8_t LongueurBateau;        //en m
 typedef char* nom;
+typedef enum {moteur, voilier} CategorieBateau;
+typedef enum {peche, plaisance} TypeBateauMoteur;
 
 typedef struct {
    PoissonsMax poissonsMax;
-   PuissancesMoteurs puissancesMoteurs;
+
 }Peche;
 
 typedef struct{
    nom nomProprietaire;
    LongueurBateau longeurBateau;
-   PuissancesMoteurs puissancesMoteurs;
 }Plaisance;
 
-typedef union{
+typedef union {
    Peche peche;
    Plaisance plaisance;
+}TypeBateauMoteurSpec;
+
+typedef struct{
+   TypeBateauMoteur typeBateauMoteur;
+   PuissancesMoteurs puissancesMoteurs;
+   TypeBateauMoteurSpec typeBateauMoteurSpec;
 }BateauMoteur;
 
 typedef struct {
@@ -51,7 +58,7 @@ typedef union {
 
 typedef struct{
    char* nom;
-   enum {moteur, voilier} categorie;
+   CategorieBateau categorieBateau;
    TypesBateau typesBateau;
 } Bateau;
 

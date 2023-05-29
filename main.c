@@ -34,19 +34,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "bateau.h"
+#include "taxes.h"
 
 
 int main (){
 
-   Bateau monBateau = {"nom Bateau", moteur, {.bateauMoteur={.peche={10}}}};
+   Bateau monBateau = {"Titanic",moteur,{.bateauMoteur={plaisance,500,.typeBateauMoteurSpec={.plaisance={"Edward Smith",(LongueurBateau)269}}}}};
 
-   Bateau port[] = {{"Poisson", moteur, {.bateauMoteur={.peche={10,20}}}}
+   Bateau port[] = {{"Poisson", moteur, {.bateauMoteur={peche,20,.typeBateauMoteurSpec={.peche={10}}}}}
                      ,{"Santa Maria", voilier,{.voilier={150}}}
                      ,{"L'Hermione",voilier,{.voilier={250}}}
-                     ,{"Titanic",moteur,{.bateauMoteur={.plaisance={"Edward Smith",269,500}}}}
-                     ,{"Chalutier",moteur,{.bateauMoteur={.peche={40,40}}}}
-                     ,{"Atlantis",moteur,{.bateauMoteur={.plaisance={"Ewan Mariaux",100,50}}}}
+                     ,{"Titanic",moteur,{.bateauMoteur={plaisance,500,.typeBateauMoteurSpec={.plaisance={"Edward Smith",269}}}}}
+                     ,{"Chalutier",moteur,{.bateauMoteur={peche,30,.typeBateauMoteurSpec={.peche={25}}}}}
+                     ,{"Atlantis",moteur,{.bateauMoteur={plaisance,50,.typeBateauMoteurSpec={.plaisance={"Ewan Mariaux",100,50}}}}}
    };
+
+   double taxe = calculerTaxe(&monBateau);
+
+   printf("%f",taxe);
 
 
 	return EXIT_SUCCESS;
