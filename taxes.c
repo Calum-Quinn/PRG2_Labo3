@@ -17,7 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "math.h"
 
 double calculerTaxe(const Bateau* bateau){
    double taxe = 0;
@@ -109,6 +109,16 @@ double calculerMediane(const Bateau port[],size_t taillePort, TypeBateau typeBat
 //   }else{
 //      return ((taxes[j/2] + taxes[j/2 + 1]) / 2);
 //   }
+}
+
+double calculerEcartType(const double* taxes,size_t nbBateaux){
+	double moyenne = calculerMoyenne(taxes, nbBateaux);
+	double somme = 0;
+
+	for(size_t i = 0; i < nbBateaux; ++i){
+		somme += pow(taxes[i] - moyenne, 2.0);
+	}
+	return sqrt(somme / (double) nbBateaux);
 }
 
 double* calculTaxeType(const Bateau port[], size_t* taillePort, bool (*estDeType)
