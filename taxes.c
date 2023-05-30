@@ -14,8 +14,11 @@
 */
 
 #include "taxes.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-double calculerTaxe(Bateau* bateau){
+
+double calculerTaxe(const Bateau* bateau){
    double taxe = 0;
 
    if(bateau->typeBateau == voilier)
@@ -45,8 +48,8 @@ double calculerTaxe(Bateau* bateau){
 double calculerSomme(const Bateau port[],size_t taillePort, TypeBateau typeBateau){
    double somme = 0;
    for(size_t i = 0; i < taillePort; ++i){
-      if(port[i]->typeBateau == typeBateau){
-         somme += calculerTaxe(port[i]);
+      if(port[i].typeBateau == typeBateau){
+         somme += calculerTaxe(&port[i]);
       }
    }
 
@@ -68,6 +71,23 @@ double calculerMoyenne(const Bateau port[],size_t taillePort, TypeBateau typeBat
    return calculerSomme(port, taillePort, typeBateau) / cmpt;
 }
 
-double calculerMediane(const Bateau* port[],size_t taillePort, TypeBateau typeBateau){
-   double[taillePort] taxes[taillePort]
+int plusGrand (const void * a, const void * b) {
+   return (*(double*)a > *(double*)b);
+}
+
+double calculerMediane(const Bateau port[],size_t taillePort, TypeBateau typeBateau){
+   double taxes[taillePort];
+   size_t j = 0;
+   for(size_t i = 0; i < taillePort; ++i){
+      if(port[i].typeBateau == typeBateau){
+         taxes[j] = calculerTaxe(&port[i]);
+         ++j;
+      }
+   }
+   qsort(taxes,j,sizeof(Bateau),plusGrand);
+
+   size_t emplacementMediane = (j+1) / 2 -1;
+
+   return taxes[emplacementMediane];
+
 }

@@ -47,6 +47,7 @@ int main (){
                      ,{"Titanic",plaisance,{.bateauMoteur={500,.typeBateauMoteurSpec={.plaisance={"Edward Smith",250}}}}}
                      ,{"Chalutier",peche,{.bateauMoteur={30,.typeBateauMoteurSpec={.peche={25}}}}}
                      ,{"Atlantis",plaisance,{.bateauMoteur={50,.typeBateauMoteurSpec={.plaisance={"Ewan Mariaux",100}}}}}
+                     ,{"Test",plaisance,{.bateauMoteur={50,.typeBateauMoteurSpec={.plaisance={"Test Mariaux",100}}}}}
    };
 
    //Calcul de la taille possible car on est dans l'espace de déclaration du port
