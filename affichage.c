@@ -18,66 +18,39 @@
 #include "taxes.h"
 
 void affichage(Bateau* bateau, int taille) {
+   Bateau* adressePort = bateau;
    for (int i = 1; i <= taille; ++i,++bateau) {
       double taxe = calculerTaxe(bateau);
       if (bateau->typeBateau == voilier) {
-         printf("Bateau %d :'\n'"
-                " - Voilier'\n'"
-                " - ",
-                i);
+         printf("Bateau %d :\n"
+                " - %s\n"
+                " - %dm^2 de voile\n",
+                i,
+                type[bateau->typeBateau],
+                bateau->typesBateauSpec.voilier.surfaceVoile);
       }
       else {
-         printf("Bateau %d :'\n'"
-                " - Moteur'\n'"
-                " - %s'\n'"
-                " - %dCV'\n'",
+         printf("Bateau %d :\n"
+                " - Moteur\n"
+                " - %s\n"
+                " - %dCV\n",
                 i,
-                bateau->typeBateau,
+                type[bateau->typeBateau],
                 bateau->typesBateauSpec.bateauMoteur.puissancesMoteurs);
          if (bateau->typeBateau == peche) {
-            printf(" - %dt de poisson'\n'",bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.peche.poissonsMax)
+            printf(" - %dt de poisson\n",bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.peche.poissonsMax);
          }
          else {
-            printf(" - %d'm\n'"
-                   " - %s'\n'",
+            printf(" - %dm\n"
+                   " - %s\n",
                    bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.plaisance.longeurBateau,
-                   bate)
+                   bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.plaisance.nomProprietaire);
          }
       }
+      printf("Taxe annuelle: %.2fEUR\n\n", taxe);
    }
+
+   printf("La somme des taxes annuelles pour les %s est de: %f",
+          type[bateau->typeBateau],
+          calculerMediane(adressePort,taille,1));
 }
-typedef enum {peche, plaisance, voilier} TypeBateau;
-
-typedef struct {
-   PoissonsMax poissonsMax;
-}Peche;
-
-typedef struct{
-   nom nomProprietaire;
-   LongueurBateau longeurBateau;
-}Plaisance;
-
-typedef union {
-   Peche peche;
-   Plaisance plaisance;
-}TypeBateauMoteurSpec;
-
-typedef struct{
-   PuissancesMoteurs puissancesMoteurs;
-   TypeBateauMoteurSpec typeBateauMoteurSpec;
-}BateauMoteur;
-
-typedef struct {
-   SurfaceVoile  surfaceVoile;
-}Voilier;
-
-typedef union {
-   BateauMoteur bateauMoteur;
-   Voilier voilier;
-}TypesBateauSpec;
-
-typedef struct{
-   char* nom;
-   TypeBateau typeBateau;
-   TypesBateauSpec typesBateauSpec;
-} Bateau;

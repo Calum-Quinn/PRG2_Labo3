@@ -14,3 +14,18 @@
 */
 
 #include "bateau.h"
+
+const char* type[] = {"Peche","Plaisance","Voilier"};
+
+bool estVoilier(const Bateau* bateau){
+   return bateau->typeBateau == voilier;
+}
+
+bool estPlaisance(const Bateau* bateau){
+   return bateau->typeBateau == plaisance;
+}
+
+bool estPeche(const Bateau* bateau){
+   return bateau->typeBateau == peche;
+}
+

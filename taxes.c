@@ -42,7 +42,7 @@ double calculerTaxe(Bateau* bateau){
    return taxe;
 }
 
-double calculerSomme(const Bateau* port[],size_t taillePort, TypeBateau typeBateau){
+double calculerSomme(const Bateau port[],size_t taillePort, TypeBateau typeBateau){
    double somme = 0;
    for(size_t i = 0; i < taillePort; ++i){
       if(port[i]->typeBateau == typeBateau){

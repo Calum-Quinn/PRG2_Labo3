@@ -27,6 +27,7 @@ typedef char* nom;
 
 //typedef enum {peche, plaisance} TypeBateauMoteur;
 typedef enum {peche, plaisance, voilier} TypeBateau;
+extern const char* type[];
 
 typedef struct {
    PoissonsMax poissonsMax;
