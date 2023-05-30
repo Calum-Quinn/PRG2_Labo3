@@ -39,12 +39,12 @@
 
 int main (){
 
-   Bateau monBateau = {"Titanic",moteur,{.bateauMoteur={plaisance,500,.typeBateauMoteurSpec={.plaisance={"Edward Smith",(LongueurBateau)269}}}}};
+   Bateau monBateau = {"Titanic",moteur,{.bateauMoteur={plaisance,500,.typeBateauMoteurSpec={.plaisance={"Edward Smith",(LongueurBateau)100}}}}};
 
    Bateau port[] = {{"Poisson", moteur, {.bateauMoteur={peche,20,.typeBateauMoteurSpec={.peche={10}}}}}
                      ,{"Santa Maria", voilier,{.voilier={150}}}
                      ,{"L'Hermione",voilier,{.voilier={250}}}
-                     ,{"Titanic",moteur,{.bateauMoteur={plaisance,500,.typeBateauMoteurSpec={.plaisance={"Edward Smith",269}}}}}
+                     ,{"Titanic",moteur,{.bateauMoteur={plaisance,500,.typeBateauMoteurSpec={.plaisance={"Edward Smith",250}}}}}
                      ,{"Chalutier",moteur,{.bateauMoteur={peche,30,.typeBateauMoteurSpec={.peche={25}}}}}
                      ,{"Atlantis",moteur,{.bateauMoteur={plaisance,50,.typeBateauMoteurSpec={.plaisance={"Ewan Mariaux",100,50}}}}}
    };
