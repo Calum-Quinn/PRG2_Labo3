@@ -15,7 +15,6 @@
 
 #include "taxes.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 
 double calculerTaxe(const Bateau* bateau){
@@ -88,17 +87,21 @@ double calculerMediane(const Bateau port[],size_t taillePort, TypeBateau typeBat
    }else{
       return ((taxes[j/2] + taxes[j/2 + 1]) / 2);
    }
-
-
-
 }
 
-double* calculParType(const Bateau port[],size_t taillePort, bool (*estDeType)(const Bateau*)){
+double* calculTaxeType(const Bateau port[], size_t taillePort, bool (*estDeType)
+(const Bateau*)){
    double* taxes = (double*)malloc(taillePort * sizeof(Bateau));
+	size_t nbBateauxDuType = 0;
 
    for(size_t i = 0; i < taillePort; ++i){
       if(estDeType(&port[i])){
-         taxes[0];
+         taxes[nbBateauxDuType] = calculerTaxe(&port[i]);
+			++nbBateauxDuType;
       }
    }
+
+	taxes = realloc((void*)taxes, nbBateauxDuType * sizeof(Bateau));
+
+	return taxes;
 }
