@@ -83,33 +83,43 @@ int plusGrand (const void * a, const void * b) {
    return (*(double*)a > *(double*)b);
 }
 
-double calculerMediane(const Bateau port[],size_t taillePort, TypeBateau typeBateau){
-   double taxes[taillePort];
-   size_t j = 0;
-   for(size_t i = 0; i < taillePort; ++i){
-      if(port[i].typeBateau == typeBateau){
-         taxes[j] = calculerTaxe(&port[i]);
-         ++j;
-      }
-   }
-   double taxesType[j];
-   memcpy(taxesType,taxes,j * sizeof(double));
-   qsort(taxesType,j,sizeof(double),plusGrand);
+double calculerMediane(double taxes[],size_t nbrBateaux){
+   qsort(taxes, nbrBateaux, sizeof(double),plusGrand);
 
-   if(j % 2){
-      return taxesType[(j+1) / 2 - 1];
+   if(nbrBateaux % 2){
+      return taxes[(nbrBateaux+1) / 2 - 1];
    }else{
-      return ((taxesType[j/2] + taxesType[j/2 + 1]) / 2);
+      return ((taxes[nbrBateaux/2 - 1] + taxes[nbrBateaux/2]) / 2);
    }
+}
 
-//   qsort(taxes,j,sizeof(Bateau),plusGrand);
+//double calculerMediane(const Bateau port[],size_t taillePort, TypeBateau typeBateau){
+//   double taxes[taillePort];
+//   size_t j = 0;
+//   for(size_t i = 0; i < taillePort; ++i){
+//      if(port[i].typeBateau == typeBateau){
+//         taxes[j] = calculerTaxe(&port[i]);
+//         ++j;
+//      }
+//   }
+//   double taxesType[j];
+//   memcpy(taxesType,taxes,j * sizeof(double));
+//   qsort(taxesType,j,sizeof(double),plusGrand);
 //
 //   if(j % 2){
-//      return taxes[(j+1) / 2 - 1];
+//      return taxesType[(j+1) / 2 - 1];
 //   }else{
-//      return ((taxes[j/2] + taxes[j/2 + 1]) / 2);
+//      return ((taxesType[j/2 - 1] + taxesType[j/2]) / 2);
 //   }
-}
+//
+////   qsort(taxes,j,sizeof(Bateau),plusGrand);
+////
+////   if(j % 2){
+////      return taxes[(j+1) / 2 - 1];
+////   }else{
+////      return ((taxes[j/2] + taxes[j/2 + 1]) / 2);
+////   }
+//}
 
 double calculerEcartType(const double* taxes, size_t nbBateaux){
 	double moyenne = calculerMoyenne(taxes, nbBateaux);

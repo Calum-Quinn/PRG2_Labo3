@@ -43,7 +43,8 @@ double calculerSomme(const double* taxes,size_t nbBateaux);
 
 double calculerMoyenne(const double* taxes,size_t nbBateaux);
 
-double calculerMediane(const Bateau port[],size_t taillePort, TypeBateau typeBateau);
+double calculerMediane(double taxes[],size_t nbrBateaux);
+//double calculerMediane(const Bateau port[],size_t taillePort, TypeBateau typeBateau);
 
 double calculerEcartType(const double* taxes,size_t nbBateaux);
 

@@ -60,6 +60,7 @@ typedef union {
 typedef struct{
    char* nom;
    TypeBateau typeBateau;
+//   double taxe;
    TypesBateauSpec typesBateauSpec;
 } Bateau;
 

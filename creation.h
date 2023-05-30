@@ -1,10 +1,10 @@
 /*
  -----------------------------------------------------------------------------------
- Nom du fichier : affichage.h
+ Nom du fichier : creation.h
  Auteur(s)      : Ewan Mariaux, Calum Quinn, Dario Vasques
  Date creation  : 25.05.2023
 
- Description    : En-tête afin d'effectuer l'affichage des bateaus
+ Description    : header pour la création des bateaux
 
  Remarque(s)    : -
 
@@ -12,15 +12,12 @@
                 : Mingw-w64 g++ 12.2.0 (Calum et Ewan)
  -----------------------------------------------------------------------------------
 */
-#ifndef LABO03_AFFICHAGE_H
-#define LABO03_AFFICHAGE_H
+
+#ifndef LABO_3_CREATION_H
+#define LABO_3_CREATION_H
 
 #include "bateau.h"
 
-void affichage(Bateau* bateau, int taille);
+Bateau* creationPort(int* taillePort);
 
-void affichageParType(const Bateau port[], size_t taillePort, TypeBateau typeBat, bool
-(*estDeType)
-	(const Bateau*));
-
-#endif //LABO03_AFFICHAGE_H
+#endif //LABO_3_CREATION_H
