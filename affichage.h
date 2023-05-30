@@ -17,6 +17,10 @@
 
 #include "bateau.h"
 
-void affichage(Bateau* bateau, int taille);
+void affichage(Bateau* bateau, size_t taille);
+
+void affichageParType(const Bateau port[], size_t taillePort, TypeBateau typeBat, bool
+(*estDeType)
+	(const Bateau*));
 
 #endif //LABO03_AFFICHAGE_H

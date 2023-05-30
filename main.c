@@ -52,9 +52,18 @@ int main (){
    };
 
    //Calcul de la taille possible car on est dans l'espace de déclaration du port
-   int taillePort = sizeof(port)/sizeof(Bateau);
+	int taillePort = sizeof(port)/sizeof(Bateau);
 
    affichage(port, taillePort);
 
+	printf("\n");
+	printf("AFFICHAGE PAR TYPE\n\n");
+	affichageParType(port, taillePort, peche, estPeche);
+
+	printf("\n");
+	affichageParType(port, taillePort, plaisance, estPlaisance);
+
+	printf("\n");
+	affichageParType(port, taillePort, voilier, estVoilier);
 	return EXIT_SUCCESS;
 }

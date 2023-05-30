@@ -111,7 +111,7 @@ double calculerMediane(const Bateau port[],size_t taillePort, TypeBateau typeBat
 //   }
 }
 
-double calculerEcartType(const double* taxes,size_t nbBateaux){
+double calculerEcartType(const double* taxes, size_t nbBateaux){
 	double moyenne = calculerMoyenne(taxes, nbBateaux);
 	double somme = 0;
 

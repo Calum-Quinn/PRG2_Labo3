@@ -67,6 +67,4 @@ bool estVoilier(const Bateau* bateau);
 bool estPlaisance(const Bateau* bateau);
 bool estPeche(const Bateau* bateau);
 
-typedef bool (*Ve)(const Bateau*);
-
 #endif //LABO03_BATEAU_H

@@ -17,7 +17,7 @@
 #include "affichage.h"
 #include "taxes.h"
 
-void affichage(Bateau* bateau, int taille) {
+void affichage(Bateau* bateau, size_t taille) {
    Bateau* adressePort = bateau;
    for (int i = 1; i <= taille; ++i,++bateau) {
       double taxe = calculerTaxe(bateau);
@@ -53,4 +53,36 @@ void affichage(Bateau* bateau, int taille) {
    printf("La somme des taxes annuelles pour les %s est de: %f",
           type[bateau->typeBateau],
           calculerMediane(adressePort,taille,1));
+}
+
+void affichageParType(const Bateau port[], size_t taillePort, TypeBateau typeBat,
+							 bool
+(*estDeType)
+	(const Bateau*)){
+
+	size_t nbBateaux = taillePort;
+	double* taxes = calculTaxeType(port, &taillePort, estDeType);
+
+	if(!taxes)
+		return;
+
+	if(estDeType){
+		printf("%s\n", type[typeBat]);
+
+		printf("Somme des taxes annuelles\n");
+		printf("%.2f\n", calculerSomme(taxes, nbBateaux));
+
+		printf("Moyenne des taxes annuelles\n");
+		printf("%.2f\n", calculerMoyenne(taxes, nbBateaux));
+
+		printf("Médiane des taxes annuelles\n");
+		//printf("%.2f\n", calculerMediane(taxes, nbBateaux));
+
+		printf("Ecrat type des taxes annuelles\n");
+		printf("%.2f\n", calculerEcartType(taxes, nbBateaux));
+	}
+
+	free(taxes);
+	taxes = NULL;
+
 }
