@@ -15,4 +15,8 @@
 #ifndef LABO03_AFFICHAGE_H
 #define LABO03_AFFICHAGE_H
 
+#include "bateau.h"
+
+void affichage(Bateau* bateau, int taille);
+
 #endif //LABO03_AFFICHAGE_H

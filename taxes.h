@@ -35,7 +35,10 @@
 
 #define TAXE_PLAISANCE_LONGUEUR 15.0;    //15 euros par metre de longueur.
 
-double calculerTaxe(Bateau port[]);
+double calculerTaxe(const Bateau* bateau);
 
+double calculerSomme(const Bateau* port[],size_t taillePort, TypeBateau typeBateau);
+
+double caclulerMoyenne(const Bateau* port[], TypeBateau typeBateau);
 
 #endif //LABO03_TAXES_H

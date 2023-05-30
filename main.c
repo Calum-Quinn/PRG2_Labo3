@@ -34,25 +34,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "bateau.h"
-#include "taxes.h"
+#include "affichage.h"
 
 
 int main (){
 
-   Bateau monBateau = {"Titanic",moteur,{.bateauMoteur={plaisance,500,.typeBateauMoteurSpec={.plaisance={"Edward Smith",(LongueurBateau)100}}}}};
+   Bateau monBateau = {"Titanic",plaisance,{.bateauMoteur={500,.typeBateauMoteurSpec={.plaisance={"Edward Smith",(LongueurBateau)100}}}}};
 
-   Bateau port[] = {{"Poisson", moteur, {.bateauMoteur={peche,20,.typeBateauMoteurSpec={.peche={10}}}}}
+   Bateau port[] = {{"Poisson", peche, {.bateauMoteur={20,.typeBateauMoteurSpec={.peche={10}}}}}
                      ,{"Santa Maria", voilier,{.voilier={150}}}
                      ,{"L'Hermione",voilier,{.voilier={250}}}
-                     ,{"Titanic",moteur,{.bateauMoteur={plaisance,500,.typeBateauMoteurSpec={.plaisance={"Edward Smith",250}}}}}
-                     ,{"Chalutier",moteur,{.bateauMoteur={peche,30,.typeBateauMoteurSpec={.peche={25}}}}}
-                     ,{"Atlantis",moteur,{.bateauMoteur={plaisance,50,.typeBateauMoteurSpec={.plaisance={"Ewan Mariaux",100,50}}}}}
+                     ,{"Titanic",plaisance,{.bateauMoteur={500,.typeBateauMoteurSpec={.plaisance={"Edward Smith",250}}}}}
+                     ,{"Chalutier",peche,{.bateauMoteur={30,.typeBateauMoteurSpec={.peche={25}}}}}
+                     ,{"Atlantis",plaisance,{.bateauMoteur={50,.typeBateauMoteurSpec={.plaisance={"Ewan Mariaux",100}}}}}
    };
 
-   double taxe = calculerTaxe(&monBateau);
+   //Calcul de la taille possible car on est dans l'espace de déclaration du port
+   int taillePort = sizeof(port)/sizeof(Bateau);
 
-   printf("%f",taxe);
-
+   affichage(port,taillePort);
 
 	return EXIT_SUCCESS;
 }
