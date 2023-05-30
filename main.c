@@ -35,11 +35,12 @@
 #include <stdlib.h>
 #include "bateau.h"
 #include "affichage.h"
-
+#include "taxes.h"
 
 int main (){
 
-   Bateau monBateau = {"Titanic",plaisance,{.bateauMoteur={500,.typeBateauMoteurSpec={.plaisance={"Edward Smith",(LongueurBateau)100}}}}};
+   Bateau monBateau = {"Titanic",plaisance,{.bateauMoteur={500,
+																				.typeBateauMoteurSpec={.plaisance={"Edward Smith",(LongueurBateau)100}}}}};
 
    Bateau port[] = {{"Poisson", peche, {.bateauMoteur={20,.typeBateauMoteurSpec={.peche={10}}}}}
                      ,{"Santa Maria", voilier,{.voilier={150}}}
@@ -53,7 +54,7 @@ int main (){
    //Calcul de la taille possible car on est dans l'espace de déclaration du port
    int taillePort = sizeof(port)/sizeof(Bateau);
 
-   affichage(port,taillePort);
+   affichage(port, taillePort);
 
 	return EXIT_SUCCESS;
 }

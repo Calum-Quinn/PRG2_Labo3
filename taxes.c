@@ -46,6 +46,7 @@ double calculerTaxe(const Bateau* bateau){
    return taxe;
 }
 
+/*
 double calculerSomme(const Bateau port[],size_t taillePort, TypeBateau typeBateau){
    double somme = 0;
    for(size_t i = 0; i < taillePort; ++i){
@@ -53,12 +54,20 @@ double calculerSomme(const Bateau port[],size_t taillePort, TypeBateau typeBatea
          somme += calculerTaxe(&port[i]);
       }
    }
-
    return somme;
 }
+*/
+double calculerSomme(const double* taxes, size_t nbBateaux){
+	double somme = 0;
+	for(size_t i = 0; i < nbBateaux; ++i){
+		somme += taxes[i];
+	}
+	return somme;
+}
 
-double calculerMoyenne(const Bateau port[],size_t taillePort, TypeBateau typeBateau){
-   double cmpt = 0;
+double calculerMoyenne(const double* taxes,size_t nbBateaux){
+   /*
+	double cmpt = 0;
    for(size_t i = 0; i < taillePort; ++i){
       //if(estDeType(&port[i])){
       //}
@@ -66,7 +75,8 @@ double calculerMoyenne(const Bateau port[],size_t taillePort, TypeBateau typeBat
          cmpt++;
       }
    }
-   return calculerSomme(port, taillePort, typeBateau) / cmpt;
+	*/
+   return calculerSomme(taxes, nbBateaux) / (double) nbBateaux;
 }
 
 int plusGrand (const void * a, const void * b) {
@@ -114,6 +124,7 @@ double* calculTaxeType(const Bateau port[], size_t* taillePort, bool (*estDeType
 	}
 
 	taxes = (double*) realloc(taxes, nbBateauxDuType * sizeof(double));
+	//Contrôle que la réallocation de mémoire s'est correctement déroulée
 	if(taxes)
 		*taillePort = nbBateauxDuType;
 	else
