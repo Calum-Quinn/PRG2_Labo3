@@ -86,8 +86,12 @@ double calculerMediane(const Bateau port[],size_t taillePort, TypeBateau typeBat
    }
    qsort(taxes,j,sizeof(Bateau),plusGrand);
 
-   size_t emplacementMediane = (j+1) / 2 -1;
+   if(j % 2){
+      return taxes[(j+1) / 2 - 1];
+   }else{
+      return ((taxes[j/2] + taxes[j/2 + 1]) / 2);
+   }
 
-   return taxes[emplacementMediane];
+
 
 }
