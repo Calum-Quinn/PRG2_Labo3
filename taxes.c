@@ -59,5 +59,5 @@ double calculerMoyenne(const Bateau* port[], TypeBateau typeBateau){
 }
 
 double calculerMediane(const Bateau* port[],size_t taillePort, TypeBateau typeBateau){
-   double[taillePort]
+   double[taillePort] taxes[taillePort]
 }
