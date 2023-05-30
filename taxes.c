@@ -18,20 +18,46 @@
 double calculerTaxe(Bateau* bateau){
    double taxe = 0;
 
-   if(bateau->categorieBateau == voilier)
+   if(bateau->typeBateau == voilier)
    {
       taxe += TAXE_BASE_VOILIER;
-      if(bateau->typesBateau.voilier.surfaceVoile >= TAXE_VOILIER_VOILURE_SEUIL)
+      if(bateau->typesBateauSpec.voilier.surfaceVoile >= TAXE_VOILIER_VOILURE_SEUIL)
          taxe += TAXE_VOILIER_VOILURE_GRANDE;
-   }else if(bateau->typesBateau.bateauMoteur.typeBateauMoteur == peche){
-      if(bateau->typesBateau.bateauMoteur.typeBateauMoteurSpec.peche.poissonsMax >= TAXE_PECHE_TONNAGE_SEUIL)
+      else
+         taxe += TAXE_VOILIER_VOILURE_PETITE;
+   }else if(bateau->typeBateau == peche){
+      taxe += TAXE_BASE_MOTEUR;
+      if(bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.peche.poissonsMax >= TAXE_PECHE_TONNAGE_SEUIL)
          taxe += TAXE_PECHE_TONNAGE_GRANDE;
-   }else if(bateau->typesBateau.bateauMoteur.typeBateauMoteur == plaisance){
-      if(bateau->typesBateau.bateauMoteur.puissancesMoteurs < TAXE_PLAISANCE_PUISSANCE_SEUIL)
+      else
+         taxe += TAXE_PECHE_TONNAGE_PETITE;
+   }else if(bateau->typeBateau == plaisance){
+      taxe += TAXE_BASE_MOTEUR;
+      if(bateau->typesBateauSpec.bateauMoteur.puissancesMoteurs < TAXE_PLAISANCE_PUISSANCE_SEUIL)
          taxe += TAXE_PLAISANCE_PUISSANCE_PETITE;
-
-      taxe += bateau->typesBateau.bateauMoteur.typeBateauMoteurSpec.plaisance.longeurBateau * TAXE_PLAISANCE_LONGUEUR;
+      else
+         taxe += bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.plaisance.longeurBateau * TAXE_PLAISANCE_LONGUEUR;
    }
 
    return taxe;
+}
+
+double calculerSomme(const Bateau* port[],size_t taillePort, TypeBateau typeBateau){
+   double somme = 0;
+   for(size_t i = 0; i < taillePort; ++i){
+      if(port[i]->typeBateau == typeBateau){
+         somme += calculerTaxe(port[i]);
+      }
+   }
+
+   return somme;
+}
+
+double calculerMoyenne(const Bateau* port[], TypeBateau typeBateau){
+
+
+}
+
+double calculerMediane(const Bateau* port[],size_t taillePort, TypeBateau typeBateau){
+   double[taillePort]
 }
