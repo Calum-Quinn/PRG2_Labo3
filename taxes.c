@@ -101,12 +101,23 @@ double calculerMediane(const Bateau port[],size_t taillePort, TypeBateau typeBat
 //   }
 }
 
-double* calculParType(const Bateau port[],size_t taillePort, bool (*estDeType)(const Bateau*)){
-   double* taxes = (double*)malloc(taillePort * sizeof(Bateau));
+double* calculTaxeType(const Bateau port[], size_t* taillePort, bool (*estDeType)
+	(const Bateau*)){
+	double* taxes = (double*) calloc(*taillePort, sizeof(double));
+	size_t nbBateauxDuType = 0;
 
-   for(size_t i = 0; i < taillePort; ++i){
-      if(estDeType(&port[i])){
-         taxes[0];
-      }
-   }
+	for(size_t i = 0; i < *taillePort; ++i){
+		if(estDeType(&port[i])){
+			taxes[nbBateauxDuType] = calculerTaxe(&port[i]);
+			++nbBateauxDuType;
+		}
+	}
+
+	taxes = (double*) realloc(taxes, nbBateauxDuType * sizeof(double));
+	if(taxes)
+		*taillePort = nbBateauxDuType;
+	else
+		*taillePort = 0;
+
+	return taxes;
 }

@@ -44,6 +44,7 @@ double calculerSomme(const Bateau port[],size_t taillePort, TypeBateau typeBatea
 double calculerMoyenne(const Bateau port[],size_t taillePort, TypeBateau typeBateau);
 double calculerMediane(const Bateau port[],size_t taillePort, TypeBateau typeBateau);
 
-double* calculTaxeType(const Bateau port[],size_t taillePort, bool (*estDeType)(const Bateau*));
+double* calculTaxeType(const Bateau port[], size_t* taillePort, bool (*estDeType)
+(const Bateau*));
 
 #endif //LABO03_TAXES_H
