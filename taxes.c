@@ -53,9 +53,19 @@ double calculerSomme(const Bateau port[],size_t taillePort, TypeBateau typeBatea
    return somme;
 }
 
-double calculerMoyenne(const Bateau* port[], TypeBateau typeBateau){
+double calculerMoyenne(const Bateau port[],size_t taillePort, TypeBateau typeBateau, bool (*estDeType)(const Bateau*)){
 
 
+   double cmpt = 0;
+   for(size_t i = 0; i < taillePort; ++i){
+      if(estDeType(&port[i])){
+
+      }
+      if(port[i].typeBateau == typeBateau){
+         cmpt++;
+      }
+   }
+   return calculerSomme(port, taillePort, typeBateau) / cmpt;
 }
 
 double calculerMediane(const Bateau* port[],size_t taillePort, TypeBateau typeBateau){

@@ -17,6 +17,7 @@
 #define LABO03_TAXES_H
 
 #include "bateau.h"
+#include <stdbool.h>
 
 #define TAXE_BASE_VOILIER 50.0
 #define TAXE_BASE_MOTEUR 100.0
@@ -39,6 +40,7 @@ double calculerTaxe(const Bateau* bateau);
 
 double calculerSomme(const Bateau* port[],size_t taillePort, TypeBateau typeBateau);
 
-double caclulerMoyenne(const Bateau* port[], TypeBateau typeBateau);
+double caclulerMoyenne(const Bateau port[],size_t taillePort, TypeBateau typeBateau, bool (*estDeType)(const Bateau*));
+double calculerMediane(const Bateau port[],size_t taillePort, TypeBateau typeBateau);
 
 #endif //LABO03_TAXES_H

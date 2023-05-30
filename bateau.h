@@ -17,6 +17,7 @@
 #define LABO03_BATEAU_H
 
 #include <inttypes.h>
+#include <stdbool.h>
 
 typedef uint16_t SurfaceVoile;         //en m^2
 typedef uint16_t PuissancesMoteurs;    //en CV
@@ -63,5 +64,8 @@ typedef struct{
    TypesBateauSpec typesBateauSpec;
 } Bateau;
 
+bool estVoilier(const Bateau* bateau);
+bool estPlaisance(const Bateau* bateau);
+bool estPeche(const Bateau* bateau);
 
 #endif //LABO03_BATEAU_H
