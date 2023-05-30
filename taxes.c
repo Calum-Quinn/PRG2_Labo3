@@ -16,6 +16,7 @@
 #include "taxes.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 double calculerTaxe(const Bateau* bateau){
@@ -81,16 +82,23 @@ double calculerMediane(const Bateau port[],size_t taillePort, TypeBateau typeBat
          ++j;
       }
    }
-   qsort(taxes,j,sizeof(Bateau),plusGrand);
+   double taxesType[j];
+   memcpy(taxesType,taxes,j * sizeof(double));
+   qsort(taxesType,j,sizeof(double),plusGrand);
 
    if(j % 2){
-      return taxes[(j+1) / 2 - 1];
+      return taxesType[(j+1) / 2 - 1];
    }else{
-      return ((taxes[j/2] + taxes[j/2 + 1]) / 2);
+      return ((taxesType[j/2] + taxesType[j/2 + 1]) / 2);
    }
 
-
-
+//   qsort(taxes,j,sizeof(Bateau),plusGrand);
+//
+//   if(j % 2){
+//      return taxes[(j+1) / 2 - 1];
+//   }else{
+//      return ((taxes[j/2] + taxes[j/2 + 1]) / 2);
+//   }
 }
 
 double* calculParType(const Bateau port[],size_t taillePort, bool (*estDeType)(const Bateau*)){
