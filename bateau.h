@@ -25,6 +25,7 @@ typedef uint8_t PoissonsMax;           //en tonnes
 typedef uint8_t LongueurBateau;        //en m
 typedef char* nom;
 
+typedef bool (*Ve)(const Bateau*);
 
 //typedef enum {peche, plaisance} TypeBateauMoteur;
 typedef enum {peche, plaisance, voilier} TypeBateau;
