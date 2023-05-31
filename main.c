@@ -65,7 +65,7 @@ int main (){
    //-------------------------------------------------------------------------
 
 
-	printf("-------------------------------------------------------------------\n\n");
+	printf(SEPARATEUR"\n\n");
 	printf("AFFICHAGE PAR TYPE\n\n");
 	affichageParType(port, taillePort, peche, estPeche);
 

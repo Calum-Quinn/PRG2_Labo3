@@ -14,10 +14,12 @@
 */
 
 #include <stdio.h>
+#include <assert.h>
+
 #include "affichage.h"
 #include "taxes.h"
 #include "bateau.h"
-#include <assert.h>
+
 
 void affichage(Bateau* bateau, int taille) {
 	assert(bateau != NULL);
@@ -26,34 +28,37 @@ void affichage(Bateau* bateau, int taille) {
    qsort(bateau,taille,sizeof(Bateau),taxePlusPetit);
    for (int i = 1; i <= taille; ++i,++bateau) {
       //Voilier
+		printf(MSG_BATEAU_ID"\n"
+				 MSG_BATEAU_NOM"\n"
+				 MSG_BATEAU_TYPE"\n",
+				 i,
+				 bateau->nom,
+				 type[bateau->typeBateau]);
+
       if (bateau->typeBateau == voilier) {
-         printf("Bateau %d :\n"
-                " - %s\n"
-					 " - %d"UNITE_SURFACE_VOILE" de voile\n",
-                i,
-                type[bateau->typeBateau],
-                bateau->typesBateauSpec.voilier.surfaceVoile);
+         printf(MSG_SURFACE_VOILE"%s""\n",
+                bateau->typesBateauSpec.voilier.surfaceVoile,
+					 UNITE_SURFACE_VOILE);
       }
       //Moteur
       else {
-         printf("Bateau %d :\n"
-                " - Moteur\n"
-                " - %s\n"
-					 " - %d"UNITE_PUISSANCE_BATEAU"\n",
-                i,
-                type[bateau->typeBateau],
-                bateau->typesBateauSpec.bateauMoteur.puissancesMoteurs);
+         printf(MSG_PUISSANCE_MOTEUR"%s""\n",
+                bateau->typesBateauSpec.bateauMoteur.puissancesMoteurs,
+					 UNITE_PUISSANCE_BATEAU);
+
          //Pêche
          if (bateau->typeBateau == peche) {
-            printf(" - %d"UNITE_POIDS_POISSON" de poisson\n"
-						 ,bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.peche.poissonsMax);
+            printf(MSG_BATEAU_PECHE"%s\n"
+						 ,bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.peche.poissonsMax,
+						 UNITE_POIDS_POISSON);
          }
          //Plaisance
          else {
-            printf(" - %d"UNITE_LONGUEUR_BATEAU"\n"
-                   " - %s\n",
-                   bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.plaisance.longeurBateau,
-                   bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.plaisance.nomProprietaire);
+            printf(MSG_CAPITAINE"\n"
+                   MSG_LONG_BATEAU"%s\n",
+                   bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.plaisance.nomProprietaire,
+						 bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.plaisance.longeurBateau,
+						 UNITE_LONGUEUR_BATEAU);
          }
       }
 

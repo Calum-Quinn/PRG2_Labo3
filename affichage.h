@@ -16,23 +16,31 @@
 #define LABO03_AFFICHAGE_H
 
 #include "bateau.h"
+#include "inttypes.h"
 
 #define SEPARATEUR "-------------------------------------------------------------"
 #define FORMAT_CALCUL "%.2f"
 #define FORMAT_MSG "%-s : "
 
-#define MSG_TITRES "Statistiques pour le type "
+#define MSG_TITRES "Statistiques pour les bateaux de type "
 
 #define MSG_SOMME "Somme des taxes"
 #define MSG_MOYENNE "Moyenne des taxes"
 #define MSG_MEDIANE "Mediane des taxes"
 #define MSG_ECART_TYPE "Ecart type des taxes"
-#define MSG_CAPITAINE "Nom du propriétaire : "
+#define MSG_BATEAU_ID "Bateau %d :"
+#define MSG_BATEAU_NOM "- Nom du bateau : %s"
+#define MSG_BATEAU_TYPE "- Type de bateau : %s"
+#define MSG_SURFACE_VOILE "- Surface de la voile : %"PRIu16
+#define MSG_BATEAU_PECHE " - Tonnes de poissons : %"PRIu8
+#define MSG_CAPITAINE " - Nom du propriétaire : %s"
+#define MSG_LONG_BATEAU " - Longueur du bateau : %"PRIu8
+#define MSG_PUISSANCE_MOTEUR "- Puissance du moteur : %"PRIu16
 
 
 #define UNITE_TAXE "EUR"
 #define UNITE_LONGUEUR_BATEAU "[m]"
-#define UNITE_POIDS_POISSON "t"
+#define UNITE_POIDS_POISSON "[t]"
 #define UNITE_PUISSANCE_BATEAU "[CV]"
 #define UNITE_SURFACE_VOILE "[m^2]"
 
