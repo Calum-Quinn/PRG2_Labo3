@@ -17,8 +17,31 @@
 
 #include "bateau.h"
 
+/**
+     * @name            : affichage
+     *
+     * @but             : afficher tous les bateaux avec leurs données
+     *
+     * @param bateau    : pointeur sur le tableau de bateaux
+     * @param taille    : taille du tableau
+     * @return          : void
+     * @throws          : NIL
+     */
 void affichage(Bateau* bateau, int taille);
 
+/**
+     * @name            : affichageParType
+     *
+     * @but             : afficher la somme, la moyenne, la médiane et l'écart type
+     *                    de chaque type de bateau
+     *
+     * @param port      : pointeur sur le tableau de bateaux
+     * @param taillePort: taille du tableau
+     * @param typeBat   : type de bateaux qu'on veut utiliser
+     * @param estDeType : pointeur sur la fonction estDeType
+     * @return          : void
+     * @throws          : NIL
+     */
 void affichageParType(const Bateau port[], size_t taillePort, TypeBateau typeBat, bool
 (*estDeType)
 	(const Bateau*));

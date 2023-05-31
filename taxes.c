@@ -14,29 +14,36 @@
 */
 
 #include "taxes.h"
-#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "math.h"
 
 double calculerTaxe(const Bateau* bateau){
    double taxe = 0;
 
+   //Voilier
    if(bateau->typeBateau == voilier)
    {
       taxe += TAXE_BASE_VOILIER;
+      //Taxe selon la taille du voile
       if(bateau->typesBateauSpec.voilier.surfaceVoile >= TAXE_VOILIER_VOILURE_SEUIL)
          taxe += TAXE_VOILIER_VOILURE_GRANDE;
       else
          taxe += TAXE_VOILIER_VOILURE_PETITE;
-   }else if(bateau->typeBateau == peche){
+   }
+   //Moteur
+   //Pêche
+   else if(bateau->typeBateau == peche){
       taxe += TAXE_BASE_MOTEUR;
+      //Taxe selon la quantité de poisson
       if(bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.peche.poissonsMax >= TAXE_PECHE_TONNAGE_SEUIL)
          taxe += TAXE_PECHE_TONNAGE_GRANDE;
       else
          taxe += TAXE_PECHE_TONNAGE_PETITE;
-   }else if(bateau->typeBateau == plaisance){
+   }
+   //Plaisance
+   else if(bateau->typeBateau == plaisance){
       taxe += TAXE_BASE_MOTEUR;
+      //Taxe selon la puissance
       if(bateau->typesBateauSpec.bateauMoteur.puissancesMoteurs < TAXE_PLAISANCE_PUISSANCE_SEUIL)
          taxe += TAXE_PLAISANCE_PUISSANCE_PETITE;
       else
@@ -46,17 +53,22 @@ double calculerTaxe(const Bateau* bateau){
    return taxe;
 }
 
-/*
-double calculerSomme(const Bateau port[],size_t taillePort, TypeBateau typeBateau){
-   double somme = 0;
-   for(size_t i = 0; i < taillePort; ++i){
-      if(port[i].typeBateau == typeBateau){
-         somme += calculerTaxe(&port[i]);
-      }
+int taxePlusPetit (const void* a, const void* b) {
+   const Bateau* bateauA = (const Bateau*) a;
+   const Bateau* bateauB = (const Bateau*) b;
+
+   //Compare les taxes des deux bateaux
+   if (bateauA->taxe < bateauB->taxe) {
+      return 1;
    }
-   return somme;
+   else if (bateauA->taxe > bateauB->taxe) {
+      return -1;
+   }
+   else {
+      return 0;
+   }
 }
-*/
+
 double calculerSomme(const double* taxes, size_t nbBateaux){
 	double somme = 0;
 	for(size_t i = 0; i < nbBateaux; ++i){
@@ -66,16 +78,6 @@ double calculerSomme(const double* taxes, size_t nbBateaux){
 }
 
 double calculerMoyenne(const double* taxes,size_t nbBateaux){
-   /*
-	double cmpt = 0;
-   for(size_t i = 0; i < taillePort; ++i){
-      //if(estDeType(&port[i])){
-      //}
-      if(port[i].typeBateau == typeBateau){
-         cmpt++;
-      }
-   }
-	*/
    return calculerSomme(taxes, nbBateaux) / (double) nbBateaux;
 }
 
@@ -83,43 +85,15 @@ int plusGrand (const void * a, const void * b) {
    return (*(double*)a > *(double*)b);
 }
 
-double calculerMediane(double taxes[],size_t nbrBateaux){
-   qsort(taxes, nbrBateaux, sizeof(double),plusGrand);
+double calculerMediane(double taxes[],size_t nbBateaux){
+   qsort(taxes, nbBateaux, sizeof(double), plusGrand);
 
-   if(nbrBateaux % 2){
-      return taxes[(nbrBateaux+1) / 2 - 1];
+   if(nbBateaux % 2){
+      return taxes[(nbBateaux + 1) / 2 - 1];
    }else{
-      return ((taxes[nbrBateaux/2 - 1] + taxes[nbrBateaux/2]) / 2);
+      return ((taxes[nbBateaux / 2 - 1] + taxes[nbBateaux / 2]) / 2);
    }
 }
-
-//double calculerMediane(const Bateau port[],size_t taillePort, TypeBateau typeBateau){
-//   double taxes[taillePort];
-//   size_t j = 0;
-//   for(size_t i = 0; i < taillePort; ++i){
-//      if(port[i].typeBateau == typeBateau){
-//         taxes[j] = calculerTaxe(&port[i]);
-//         ++j;
-//      }
-//   }
-//   double taxesType[j];
-//   memcpy(taxesType,taxes,j * sizeof(double));
-//   qsort(taxesType,j,sizeof(double),plusGrand);
-//
-//   if(j % 2){
-//      return taxesType[(j+1) / 2 - 1];
-//   }else{
-//      return ((taxesType[j/2 - 1] + taxesType[j/2]) / 2);
-//   }
-//
-////   qsort(taxes,j,sizeof(Bateau),plusGrand);
-////
-////   if(j % 2){
-////      return taxes[(j+1) / 2 - 1];
-////   }else{
-////      return ((taxes[j/2] + taxes[j/2 + 1]) / 2);
-////   }
-//}
 
 double calculerEcartType(const double* taxes, size_t nbBateaux){
 	double moyenne = calculerMoyenne(taxes, nbBateaux);
@@ -136,6 +110,7 @@ double* calculTaxeType(const Bateau port[], size_t* taillePort, bool (*estDeType
 	double* taxes = (double*) calloc(*taillePort, sizeof(double));
 	size_t nbBateauxDuType = 0;
 
+   //Compte le nombre de bateaux du même type et stock leur taxe
 	for(size_t i = 0; i < *taillePort; ++i){
 		if(estDeType(&port[i])){
 			taxes[nbBateauxDuType] = calculerTaxe(&port[i]);

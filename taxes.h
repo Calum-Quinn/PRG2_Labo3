@@ -32,22 +32,92 @@
 #define TAXE_PECHE_TONNAGE_SEUIL 20.0
 
 #define TAXE_PLAISANCE_PUISSANCE_PETITE 50.0
-#define TAXE_PLAISANCE_PUISSANCE_GRANDE 0.0
 #define TAXE_PLAISANCE_PUISSANCE_SEUIL 100
 
-#define TAXE_PLAISANCE_LONGUEUR 15.0;    //15 euros par metre de longueur.
+#define TAXE_PLAISANCE_LONGUEUR 15.0
 
+/**
+     * @name            : calculerTaxe
+     *
+     * @but             : calculer la taxe annuelle d'un bateau
+     *
+     * @param bateau    : bateau pour lequel il faut calculer
+     * @return          : la taxe
+     * @throws          : NIL
+     */
 double calculerTaxe(const Bateau* bateau);
 
+/**
+     * @name            : taxePlusPetit
+     *
+     * @but             : comparer deux taxes
+     *
+     * @param a         : pointeur sur le premier bateau
+     * @param b         : pointeur sur le deuxième bateau
+     * @return          : int pour dire s'il est plus grand, plus petit ou égal
+     * @throws          : NIL
+     */
+int taxePlusPetit (const void* a, const void* b);
+
+/**
+     * @name            : calculerSomme
+     *
+     * @but             : calculer la somme des taxes annuelles
+     *
+     * @param taxes     : tableau des taxes annuelles
+     * @param nbBateaux : taille du tableau
+     * @return          : la somme
+     * @throws          : NIL
+     */
 double calculerSomme(const double* taxes,size_t nbBateaux);
 
+/**
+     * @name            : calculerMoyenne
+     *
+     * @but             : calculer la moyenne des taxes annuelles
+     *
+     * @param taxes     : tableau des taxes annuelles
+     * @param nbBateaux : taille du tableau
+     * @return          : la moyenne
+     * @throws          : NIL
+     */
 double calculerMoyenne(const double* taxes,size_t nbBateaux);
 
-double calculerMediane(double taxes[],size_t nbrBateaux);
-//double calculerMediane(const Bateau port[],size_t taillePort, TypeBateau typeBateau);
+/**
+     * @name            : calculerMediane
+     *
+     * @but             : calculer la médiane des taxes annuelles
+     *
+     * @param taxes     : tableau des taxes annuelles
+     * @param nbBateaux : taille du tableau
+     * @return          : la médiane
+     * @throws          : NIL
+     */
+double calculerMediane(double taxes[],size_t nbBateaux);
 
+/**
+     * @name            : calculerEcartType
+     *
+     * @but             : calculer l'écart type des taxes annuelles
+     *
+     * @param taxes     : tableau des taxes annuelles
+     * @param nbBateaux : taille du tableau
+     * @return          : l'écart type
+     * @throws          : NIL
+     */
 double calculerEcartType(const double* taxes,size_t nbBateaux);
 
+/**
+     * @name            : calculTaxeType
+     *
+     * @but             : calculer les taxes de tous les bateaux d'un type
+     *
+     * @param port      : tableau de bateaux
+     * @param taillePort: taille du tableau
+     * @param estDeType : pointeur sur la fonction estDeType
+     * @return          : pointeur sur le tableau des taxes selon le type
+     * @throws          : NIL
+     */
 double* calculTaxeType(const Bateau port[], size_t* taillePort, bool (*estDeType)
 (const Bateau*));
 

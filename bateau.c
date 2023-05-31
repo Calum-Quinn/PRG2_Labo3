@@ -28,4 +28,3 @@ bool estPlaisance(const Bateau* bateau){
 bool estPeche(const Bateau* bateau){
    return bateau->typeBateau == peche;
 }
-

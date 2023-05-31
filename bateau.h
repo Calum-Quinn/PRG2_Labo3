@@ -4,7 +4,7 @@
  Auteur(s)      : Ewan Mariaux, Calum Quinn, Dario Vasques
  Date creation  : 25.05.2023
 
- Description    : Entete pour la création de bateau.
+ Description    : Entete pour la création de bateaux.
 
  Remarque(s)    : -
 
@@ -25,7 +25,6 @@ typedef uint8_t PoissonsMax;           //en tonnes
 typedef uint8_t LongueurBateau;        //en m
 typedef char* nom;
 
-//typedef enum {peche, plaisance} TypeBateauMoteur;
 typedef enum {peche, plaisance, voilier} TypeBateau;
 extern const char* type[];
 
@@ -60,7 +59,7 @@ typedef union {
 typedef struct{
    char* nom;
    TypeBateau typeBateau;
-//   double taxe;
+   double taxe;
    TypesBateauSpec typesBateauSpec;
 } Bateau;
 
