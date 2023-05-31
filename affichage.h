@@ -24,18 +24,18 @@
 
 #define MSG_TITRES "Statistiques pour les bateaux de type "
 
-#define MSG_SOMME "Somme des taxes"
-#define MSG_MOYENNE "Moyenne des taxes"
-#define MSG_MEDIANE "Mediane des taxes"
-#define MSG_ECART_TYPE "Ecart type des taxes"
-#define MSG_BATEAU_ID "Bateau %d :"
-#define MSG_BATEAU_NOM "- Nom du bateau : %s"
-#define MSG_BATEAU_TYPE "- Type de bateau : %s"
-#define MSG_SURFACE_VOILE "- Surface de la voile : %"PRIu16
-#define MSG_BATEAU_PECHE " - Tonnes de poissons : %"PRIu8
-#define MSG_CAPITAINE " - Nom du propriétaire : %s"
-#define MSG_LONG_BATEAU " - Longueur du bateau : %"PRIu8
-#define MSG_PUISSANCE_MOTEUR "- Puissance du moteur : %"PRIu16
+#define MSG_SOMME             "Somme des taxes     "
+#define MSG_MOYENNE           "Moyenne des taxes   "
+#define MSG_MEDIANE           "Mediane des taxes   "
+#define MSG_ECART_TYPE        "Ecart type des taxes"
+#define MSG_BATEAU_ID         "Bateau %d           "
+#define MSG_BATEAU_NOM        " - Nom du bateau       : %s"
+#define MSG_BATEAU_TYPE       " - Type de bateau      : %s"
+#define MSG_SURFACE_VOILE     " - Surface de la voile : %"PRIu16
+#define MSG_BATEAU_PECHE      " - Tonnes de poissons  : %"PRIu8
+#define MSG_CAPITAINE         " - Nom du proprietaire : %s"
+#define MSG_LONG_BATEAU       " - Longueur du bateau  : %"PRIu8
+#define MSG_PUISSANCE_MOTEUR  " - Puissance du moteur : %"PRIu16
 
 
 #define UNITE_TAXE "EUR"
