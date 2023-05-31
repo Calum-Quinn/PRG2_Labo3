@@ -16,7 +16,7 @@
 #define LABO03_AFFICHAGE_H
 
 #include "bateau.h"
-#include "inttypes.h"
+#include <inttypes.h>
 
 #define SEPARATEUR "-------------------------------------------------------------"
 #define FORMAT_CALCUL "%.2f"

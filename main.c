@@ -14,23 +14,6 @@
  -----------------------------------------------------------------------------------
 */
 
-/*
- *    moteurs
- *       types
- *          pêches
- *             tonnes de poissons
- *          plaisance
- *             longueur
- *             nom du propriétaire
- *       puissance moteurs
- *
- *
- *    voiliers
- *       surface m^2 voile
- *
- *
- *
- */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -58,7 +41,7 @@ int main (){
       port[j].taxe = calculerTaxe(&port[j]);
    }
 
-   //On tris le port dans l'ordre décroissant des taxes et on affiche
+   //On trie le port dans l'ordre décroissant des taxes et on affiche
    qsort(port,taillePort,sizeof(Bateau),taxePlusPetit);
    affichage(port, taillePort);
 
