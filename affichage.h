@@ -17,6 +17,26 @@
 
 #include "bateau.h"
 
+#define SEPARATEUR "-------------------------------------------------------------"
+#define FORMAT_CALCUL "%.2f"
+#define FORMAT_MSG "%-s : "
+
+#define MSG_TITRES "Statistiques pour le type "
+
+#define MSG_SOMME "Somme des taxes"
+#define MSG_MOYENNE "Moyenne des taxes"
+#define MSG_MEDIANE "Mediane des taxes"
+#define MSG_ECART_TYPE "Ecart type des taxes"
+#define MSG_CAPITAINE "Nom du propriétaire : "
+
+
+#define UNITE_TAXE "EUR"
+#define UNITE_LONGUEUR_BATEAU "[m]"
+#define UNITE_POIDS_POISSON "t"
+#define UNITE_PUISSANCE_BATEAU "[CV]"
+#define UNITE_SURFACE_VOILE "[m^2]"
+
+
 /**
      * @name            : affichage
      *

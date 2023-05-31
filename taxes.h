@@ -108,7 +108,7 @@ double calculerMediane(double taxes[],size_t nbBateaux);
 double calculerEcartType(const double* taxes,size_t nbBateaux);
 
 /**
-     * @name            : calculTaxeType
+     * @name            : calculTaxeParType
      *
      * @but             : calculer les taxes de tous les bateaux d'un type
      *
@@ -118,7 +118,7 @@ double calculerEcartType(const double* taxes,size_t nbBateaux);
      * @return          : pointeur sur le tableau des taxes selon le type
      * @throws          : NIL
      */
-double* calculTaxeType(const Bateau port[], size_t* taillePort, bool (*estDeType)
+double* calculTaxeParType(const Bateau port[], size_t* taillePort, bool (*estDeType)
 (const Bateau*));
 
 #endif //LABO03_TAXES_H

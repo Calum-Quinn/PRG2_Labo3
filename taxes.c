@@ -16,9 +16,12 @@
 #include "taxes.h"
 #include <stdlib.h>
 #include "math.h"
+#include "assert.h"
 
 double calculerTaxe(const Bateau* bateau){
-   double taxe = 0;
+	assert(bateau != NULL);
+
+	double taxe = 0;
 
    //Voilier
    if(bateau->typeBateau == voilier)
@@ -54,6 +57,8 @@ double calculerTaxe(const Bateau* bateau){
 }
 
 int taxePlusPetit (const void* a, const void* b) {
+	assert(a != NULL && b != NULL);
+
    const Bateau* bateauA = (const Bateau*) a;
    const Bateau* bateauB = (const Bateau*) b;
 
@@ -70,6 +75,8 @@ int taxePlusPetit (const void* a, const void* b) {
 }
 
 double calculerSomme(const double* taxes, size_t nbBateaux){
+	assert(taxes != NULL);
+
 	double somme = 0;
 	for(size_t i = 0; i < nbBateaux; ++i){
 		somme += taxes[i];
@@ -78,6 +85,9 @@ double calculerSomme(const double* taxes, size_t nbBateaux){
 }
 
 double calculerMoyenne(const double* taxes,size_t nbBateaux){
+	assert(taxes != NULL);
+	assert(nbBateaux != 0);
+
    return calculerSomme(taxes, nbBateaux) / (double) nbBateaux;
 }
 
@@ -86,6 +96,8 @@ int plusGrand (const void * a, const void * b) {
 }
 
 double calculerMediane(double taxes[],size_t nbBateaux){
+	assert(taxes != NULL);
+
    qsort(taxes, nbBateaux, sizeof(double), plusGrand);
 
    if(nbBateaux % 2){
@@ -96,6 +108,9 @@ double calculerMediane(double taxes[],size_t nbBateaux){
 }
 
 double calculerEcartType(const double* taxes, size_t nbBateaux){
+	assert(taxes != NULL);
+	assert(nbBateaux != 0);
+
 	double moyenne = calculerMoyenne(taxes, nbBateaux);
 	double somme = 0;
 
@@ -105,8 +120,10 @@ double calculerEcartType(const double* taxes, size_t nbBateaux){
 	return sqrt(somme / (double) nbBateaux);
 }
 
-double* calculTaxeType(const Bateau port[], size_t* taillePort, bool (*estDeType)
+double* calculTaxeParType(const Bateau port[], size_t* taillePort, bool (*estDeType)
 	(const Bateau*)){
+	assert(port != NULL && taillePort != NULL && estDeType != NULL);
+
 	double* taxes = (double*) calloc(*taillePort, sizeof(double));
 	size_t nbBateauxDuType = 0;
 

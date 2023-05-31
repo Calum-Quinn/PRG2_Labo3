@@ -17,8 +17,11 @@
 #include "affichage.h"
 #include "taxes.h"
 #include "bateau.h"
+#include <assert.h>
 
 void affichage(Bateau* bateau, int taille) {
+	assert(bateau != NULL);
+
    //Tri les bateaux par ordre décroissant de leur taxe
    qsort(bateau,taille,sizeof(Bateau),taxePlusPetit);
    for (int i = 1; i <= taille; ++i,++bateau) {
@@ -26,7 +29,7 @@ void affichage(Bateau* bateau, int taille) {
       if (bateau->typeBateau == voilier) {
          printf("Bateau %d :\n"
                 " - %s\n"
-                " - %dm^2 de voile\n",
+					 " - %d"UNITE_SURFACE_VOILE" de voile\n",
                 i,
                 type[bateau->typeBateau],
                 bateau->typesBateauSpec.voilier.surfaceVoile);
@@ -36,23 +39,27 @@ void affichage(Bateau* bateau, int taille) {
          printf("Bateau %d :\n"
                 " - Moteur\n"
                 " - %s\n"
-                " - %dCV\n",
+					 " - %d"UNITE_PUISSANCE_BATEAU"\n",
                 i,
                 type[bateau->typeBateau],
                 bateau->typesBateauSpec.bateauMoteur.puissancesMoteurs);
          //Pêche
          if (bateau->typeBateau == peche) {
-            printf(" - %dt de poisson\n",bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.peche.poissonsMax);
+            printf(" - %d"UNITE_POIDS_POISSON" de poisson\n"
+						 ,bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.peche.poissonsMax);
          }
          //Plaisance
          else {
-            printf(" - %dm\n"
+            printf(" - %d"UNITE_LONGUEUR_BATEAU"\n"
                    " - %s\n",
                    bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.plaisance.longeurBateau,
                    bateau->typesBateauSpec.bateauMoteur.typeBateauMoteurSpec.plaisance.nomProprietaire);
          }
       }
-      printf("Taxe annuelle: %.2fEUR\n\n", bateau->taxe);
+
+      printf("%s"FORMAT_CALCUL" %s""\n\n", "Taxe annuelle: ",
+				 bateau->taxe,
+				 UNITE_TAXE);
    }
 }
 
@@ -61,24 +68,32 @@ void affichageParType(const Bateau port[], size_t taillePort, TypeBateau typeBat
 (*estDeType)
 	(const Bateau*)){
 
-	double* taxes = calculTaxeType(port, &taillePort, estDeType);
+	assert(port != NULL && estDeType != NULL);
+
+	double* taxes = calculTaxeParType(port, &taillePort, estDeType);
 
 	if(!taxes)
 		return;
 
 	if(estDeType){
-		printf("%s\n", type[typeBat]);
+		printf(MSG_TITRES"%s\n", type[typeBat]);
 
-		printf("Somme des taxes annuelles\n");
-      printf("%.2fEUR\n", calculerSomme(taxes, taillePort));
+		printf(FORMAT_MSG FORMAT_CALCUL" %s\n",
+				 MSG_SOMME, calculerSomme(taxes,taillePort),
+				 UNITE_TAXE);
 
-		printf("Moyenne des taxes annuelles\n");
-      printf("%.2fEUR\n", calculerMoyenne(taxes, taillePort));
+		printf(FORMAT_MSG FORMAT_CALCUL" %s\n",
+				 MSG_MOYENNE, calculerMoyenne(taxes,taillePort),
+				 UNITE_TAXE);
 
-		printf("Mediane des taxes annuelles\n");
-      printf("%.2fEUR\n", calculerMediane(taxes, taillePort));
+      printf(FORMAT_MSG FORMAT_CALCUL" %s\n",
+				 MSG_MEDIANE, calculerMediane(taxes,taillePort),
+				 UNITE_TAXE);
 
-		printf("Ecart type des taxes annuelles\n");
-      printf("%.2fEUR\n\n", calculerEcartType(taxes, taillePort));
+		printf(FORMAT_MSG FORMAT_CALCUL" %s\n\n",
+				 MSG_ECART_TYPE, calculerEcartType(taxes,taillePort),
+				 UNITE_TAXE);
+
+		printf(SEPARATEUR"\n\n");
 	}
 }
