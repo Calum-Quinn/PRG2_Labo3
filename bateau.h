@@ -63,8 +63,38 @@ typedef struct{
    TypesBateauSpec typesBateauSpec;
 } Bateau;
 
+
+/**
+     * @name            : estVoilier
+     *
+     * @but             : controle si le bateau est un voilier
+     *
+     * @param bateau    : pointeur constant sur le bateau
+     * @return          : retourne true si le bateau est un voilier
+     * @throws          : NIL
+     */
 bool estVoilier(const Bateau* bateau);
+
+/**
+     * @name            : estPlaisance
+     *
+     * @but             : controle si le bateau est un bateau de plaisance
+     *
+     * @param bateau    : pointeur constant sur le bateau
+     * @return          : retourne true si le bateau est un bateau de plaisance
+     * @throws          : NIL
+     */
 bool estPlaisance(const Bateau* bateau);
+
+/**
+     * @name            : estPeche
+     *
+     * @but             : controle si le bateau est un bateau de peche
+     *
+     * @param bateau    : pointeur constant sur le bateau
+     * @return          : retourne true si le bateau est un bateau de peche
+     * @throws          : NIL
+     */
 bool estPeche(const Bateau* bateau);
 
 #endif //LABO03_BATEAU_H
