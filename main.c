@@ -30,7 +30,7 @@ int main (){
                      ,{"Titanic",plaisance, 0,{.bateauMoteur={500,.typeBateauMoteurSpec={.plaisance={"Edward Smith",250}}}}}
                      ,{"Chalutier",peche, 0,{.bateauMoteur={30,.typeBateauMoteurSpec={.peche={25}}}}}
                      ,{"Atlantis",plaisance, 0,{.bateauMoteur={50,.typeBateauMoteurSpec={.plaisance={"Ewan Mariaux",100}}}}}
-                     ,{"Test",plaisance, 0,{.bateauMoteur={50,.typeBateauMoteurSpec={.plaisance={"Test Mariaux",100}}}}}
+                     ,{"Huguette",plaisance, 0,{.bateauMoteur={50,.typeBateauMoteurSpec={.plaisance={"Jean-Gilbert Delacroix",100}}}}}
    };
 
    //La taille est définissable à l'intérieur du domaine de définition du tableau
